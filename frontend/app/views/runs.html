@@ -1,0 +1,119 @@
+<div class="row">
+    <div data-ng-show="!isReport" class="col-md-offset-1 col-md-9">
+        <div data-ng-show="message" class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Oh snap!</strong>&nbsp;{{message}}
+        </div>
+        <div class="well filter-form col-md-8">
+            <div class="col-md-5">
+                <input id="fromDatetimepicker" class="form-control" placeholder="from" />
+            </div>
+            <div class="col-md-5">
+                <input id="toDatetimepicker" class="form-control" placeholder="to" />
+            </div>
+            <button data-ng-click="filter()" class="btn btn-info col-md-2">Filter</button>
+        </div>
+        <div class="report col-md-4">
+            <button data-ng-click="generateReport()" class="btn btn-primary btn-lg">Weekly report</button>
+        </div>
+        <form name="form" class="row" novalidate>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Distance, m</th>
+                        <th>Duration, min</th>
+                        <th>Speed, km/h</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input id="datetimepicker" name="datetimepicker" class="form-control" />
+                            <input type="hidden" data-ng-model="run.date" name="date" />
+                            <div class="has-error" data-ng-show="form.$submitted || form.datetimepicker.$touched">
+                                <label class="control-label" for="datetimepicker" data-ng-show="form.date.$error.dateinvalid">date required</label>
+                            </div>
+                        </td>
+                        <td>
+                            <input data-ng-model="run.distance" name="distance" class="form-control" required data-ng-pattern="/^[1-9][0-9]{0,5}$/" />
+                            <div class="has-error" data-ng-show="form.$submitted || form.distance.$touched">
+                                <label class="control-label" for="distance" data-ng-show="form.distance.$error.required || form.distance.$error.pattern">integer required</label>
+                            </div>
+                        </td>
+                        <td>
+                            <input data-ng-model="run.duration" name="duration" class="form-control" required data-ng-pattern="/^[1-9][0-9]{0,5}$/" />
+                            <div class="has-error" data-ng-show="form.$submitted || form.duration.$touched">
+                                <label class="control-label" for="duration" data-ng-show="form.duration.$error.required || form.duration.$error.pattern">integer required</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" data-ng-hide="selectedIndex > -1" data-ng-click="add(run)" class="btn btn-default">
+                                <i class="glyphicon glyphicon-plus">
+                                </i>&nbsp;Add new
+                            </button>
+                            <div data-ng-show="selectedIndex > -1" class="edit-buttons">
+                                <button type="button" data-ng-click="update(run)" class="btn btn-xs btn-success">
+                                    &nbsp;<i class="glyphicon glyphicon-ok">
+                                    </i>&nbsp;save&nbsp;
+                                </button>
+                                <button type="button" data-ng-click="reset()" class="btn btn-xs btn-default">
+                                    <i class="glyphicon glyphicon-remove">
+                                    </i>&nbsp;cancel
+                                </button>
+                                <button type="button" data-ng-click="delete(run)" class="btn btn-xs btn-danger">
+                                    <i class="glyphicon glyphicon-trash">
+                                    </i>&nbsp;delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-ng-repeat="run in runs | filter: dateFilter | orderBy: '-date'" class="clickable" data-ng-click="select(run)">
+                        <td>
+                            {{run.date | date:'dd MMM yyyy, HH:mm'}}
+                        </td>
+                        <td>
+                            {{run.distance}}
+                        </td>
+                        <td>
+                            {{run.duration}}
+                        </td>
+                        <td>
+                            {{run.distance / run.duration * 60 / 1000 | number:2}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>  
+    <div data-ng-show="isReport" class="chart-container col-md-offset-1 col-md-10">
+        <a class="btn btn-default btn-xs" data-ng-click="isReport=false">close</a>
+        <canvas id="distance" class="chart chart-line" data="distance" labels="labels" legend="true" series="distanceSeries"></canvas>
+        <canvas id="speed" class="chart chart-line" data="speed" labels="labels" legend="true" series="speedSeries"></canvas>
+        <div class="col-md-offset-3 col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="info">Week</th>
+                        <th class="info">Average distance, m</th>
+                        <th class="info">Average speed, km/h</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="week in weeks | orderBy: '-from'">
+                        <td>
+                            {{week.from | date:'dd MMM yyyy'}}<br />
+                            {{week.to | date:'dd MMM yyyy'}}
+                        </td>
+                        <td>
+                            {{week.distance | number:2}}
+                        </td>
+                        <td>
+                            {{week.speed | number:2}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

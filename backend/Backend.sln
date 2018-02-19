@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogging", "Jogging\Jogging.csproj", "{3AED48BC-5043-4E90-85D9-B266547F3C96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoggingTest", "JoggingTest\JoggingTest.csproj", "{22C29EFF-A698-48F2-B22A-CB16F8B211ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AED48BC-5043-4E90-85D9-B266547F3C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AED48BC-5043-4E90-85D9-B266547F3C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AED48BC-5043-4E90-85D9-B266547F3C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AED48BC-5043-4E90-85D9-B266547F3C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C29EFF-A698-48F2-B22A-CB16F8B211ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C29EFF-A698-48F2-B22A-CB16F8B211ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C29EFF-A698-48F2-B22A-CB16F8B211ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C29EFF-A698-48F2-B22A-CB16F8B211ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

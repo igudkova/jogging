@@ -1,0 +1,25 @@
+.filter-form div {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+.report {
+    text-align: right;
+    padding-top: 8px;
+}
+
+.edit-buttons {
+    padding-top: 10px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.chart-container {
+    text-align: right;
+}
+
+.chart-container table {
+    text-align: left;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Jogging",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.8.0"
+  },
+  "scripts": {
+    "start": "http-server"
+  },
+  "author": "Irina Gudkova"
+}

@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-offset-2 col-md-7">
+        <div data-ng-show="message" class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Oh snap!</strong>&nbsp;{{message}}
+        </div>
+        <form name="form" class="row" novalidate>
+            <div class="row well well-sm" data-ng-show="selectedIndex > -1">
+                <div class="col-md-4">
+                    {{user.name}}
+                </div>
+            <div class="col-md-4">
+                <input type="checkbox" data-ng-model="user.isManager" name="isManager"/>&nbsp;Manager
+            </div>
+            <div class="col-md-4">
+                    <button type="button" data-ng-click="update(user)" class="btn btn-xs btn-success">
+                        &nbsp;<i class="glyphicon glyphicon-ok">
+                        </i>&nbsp;save&nbsp;
+                    </button>
+                    <button type="button" data-ng-click="reset()" class="btn btn-xs btn-default">
+                        <i class="glyphicon glyphicon-remove">
+                        </i>&nbsp;cancel
+                    </button>
+                    <button type="button" data-ng-click="delete(user)" class="btn btn-xs btn-danger">
+                        <i class="glyphicon glyphicon-trash">
+                        </i>&nbsp;delete
+                    </button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Manager</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="user in users" class="clickable" data-ng-click="select(user)">
+                        <td>
+                            {{user.name}}
+                        </td>
+                        <td>
+                            {{user.isManager ? 'yes' : 'no'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
